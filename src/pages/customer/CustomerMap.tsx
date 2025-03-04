@@ -107,29 +107,47 @@ const CustomerMap: React.FC = () => {
               >
                 {selectedStation?.id === station.id && (
                   <Popup>
-                    <div className="p-2 max-w-xs">
-                      <h3 className="font-bold text-gray-900">{selectedStation.name}</h3>
-                      <p className="text-gray-600 text-sm">{selectedStation.address}</p>
-                      
-                      <div className="mt-2 grid grid-cols-2 gap-2 text-sm">
-                        <div>
-                          <span className="text-gray-500">Price:</span>
-                          <span className="ml-1 font-medium">₹{selectedStation.pricePerKwh}/kWh</span>
+                    <div className="p-4 max-w-sm">
+                      <h3 className="font-bold text-gray-900 text-lg mb-2">{selectedStation.name}</h3>
+                      <p className="text-gray-600 text-sm mb-4">{selectedStation.address}</p>
+                      <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
+                        <div className="bg-gray-50 p-2 rounded">
+                          <span className="text-gray-500 block">Price</span>
+                          <span className="font-medium text-gray-900">₹{selectedStation.pricePerKwh}/kWh</span>
                         </div>
-                        <div>
-                          <span className="text-gray-500">Ports:</span>
-                          <span className="ml-1 font-medium">{selectedStation.availablePorts} available</span>
+                        <div className="bg-gray-50 p-2 rounded">
+                          <span className="text-gray-500 block">Ports</span>
+                          <span className="font-medium text-gray-900">{selectedStation.availablePorts} available</span>
                         </div>
                       </div>
                       
-                      <button
-                        className="mt-3 w-full bg-blue-600 text-white py-1.5 px-3 rounded text-sm font-medium hover:bg-blue-700"
-                        onClick={() => {
-                          alert(`Charging session started at ${selectedStation.name}`);
-                        }}
-                      >
-                        Start Charging
-                      </button>
+                      <div className="border-t border-gray-200 pt-4">
+                        <h4 className="font-medium text-gray-900 mb-3">Scan & Pay to Start Charging</h4>
+                        <div className="bg-white p-4 rounded-lg border border-gray-200 mb-4">
+                          <div className="flex justify-center mb-3">
+                            <img 
+                              src="/qrcode.jpeg" 
+                              alt="Payment QR Code"
+                              className="w-48 h-48 object-contain"
+                            />
+                          </div>
+                          <div className="text-center">
+                            <p className="text-sm font-medium text-gray-900 mb-1">Scan to Pay via UPI</p>
+                            <p className="text-xs text-gray-500">Amount: ₹{(selectedStation.pricePerKwh * 30).toFixed(2)}</p>
+                          </div>
+                        </div>
+                        <button
+                          className="w-full bg-blue-600 text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors flex items-center justify-center"
+                          onClick={() => {
+                            if (window.confirm('Have you completed the payment?')) {
+                              alert('Payment successful! Your charging session will begin shortly.');
+                              selectStation(null);
+                            }
+                          }}
+                        >
+                          <span>Confirm Payment</span>
+                        </button>
+                      </div>
                     </div>
                   </Popup>
                 )}
