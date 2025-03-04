@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/auth/Login';
 import Signup from './pages/auth/Signup';
+import Communities from './components/Communities';
 
 // Partner Pages
 import PartnerOnboarding from './pages/partner/PartnerOnboarding';
@@ -52,6 +53,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/communities" element={<Communities />} />
             
             {/* Partner Routes */}
             <Route 

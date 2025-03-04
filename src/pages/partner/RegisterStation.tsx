@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
 import { useStationStore } from '../../store/stationStore';
+import { usePartnerStore } from '../../store/partnerStore';
 import { MapPin } from 'lucide-react';
 import { MapContainer, TileLayer, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -10,6 +11,14 @@ const RegisterStation: React.FC = () => {
   const navigate = useNavigate();
   const { user } = useAuthStore();
   const { addStation } = useStationStore();
+  const { hasChargingStation } = usePartnerStore();
+
+  useEffect(() => {
+    // If the partner hasn't completed onboarding, redirect to onboarding
+    if (!hasChargingStation) {
+      navigate('/partner/onboarding');
+    }
+  }, [hasChargingStation, navigate]);
   
   const [stationName, setStationName] = useState('');
   const [address, setAddress] = useState('');

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
-import { LogOut, User, ShoppingCart } from 'lucide-react';
+import { LogOut, User, ShoppingCart, Compass } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const { user, isAuthenticated, logout } = useAuthStore();
@@ -66,6 +66,10 @@ const Navbar: React.FC = () => {
                 className="bg-white text-blue-600 px-4 py-1 rounded-md hover:bg-blue-100"
               >
                 Sign Up
+              </Link>
+              <Link to="/communities" className="hover:text-blue-200 flex items-center gap-1">
+                <Compass size={18} />
+                <span>Communities</span>
               </Link>
             </>
           )}
