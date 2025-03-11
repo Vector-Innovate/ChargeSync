@@ -141,7 +141,7 @@ const CustomerMap: React.FC = () => {
                           onClick={() => {
                             if (window.confirm('Have you completed the payment?')) {
                               alert('Payment successful! Your charging session will begin shortly.');
-                              selectStation(null);
+                              selectStation('');
                             }
                           }}
                         >

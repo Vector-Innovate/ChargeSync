@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 import { LogOut, User, ShoppingCart, Compass } from 'lucide-react';
+import ChatbotButton from './ChatbotButton';
 
 const Navbar: React.FC = () => {
   const { user, isAuthenticated, logout } = useAuthStore();
@@ -13,6 +14,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
+    <>
     <nav className="bg-blue-600 text-white shadow-md">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link to="/" className="text-xl font-bold flex items-center gap-2">
@@ -76,6 +78,8 @@ const Navbar: React.FC = () => {
         </div>
       </div>
     </nav>
+    <ChatbotButton />
+    </>
   );
 };
 

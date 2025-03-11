@@ -1,0 +1,35 @@
+Project Name: Project Bolt
+
+Project Structure:
+- src/: Main source directory
+  - components/: Reusable UI components
+    - ChatbotButton.tsx: AI assistant chat interface
+    - Communities.tsx: Community features component
+    - Footer.tsx: Page footer
+    - Navbar.tsx: Navigation bar
+  - pages/: Application pages
+    - Home.tsx: Main landing page
+    - auth/: Authentication related pages
+    - customer/: Customer related pages
+    - partner/: Partner program pages
+  - services/: Business logic services
+    - gemini.ts: AI chat service implementation
+  - store/: State management
+    - authStore.ts: Authentication state
+    - cartStore.ts: Shopping cart state
+    - partnerStore.ts: Partner program state
+    - stationStore.ts: Delivery station state
+
+Key Features:
+- AI-powered chatbot assistant
+- E-commerce platform functionality
+- Partner program integration
+- Community features
+- Authentication system
+
+Technologies Used:
+- React with TypeScript
+- Vite build tool
+- Tailwind CSS for styling
+- Firebase integration
+- Google Gemini AI for chat functionality
